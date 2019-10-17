@@ -1,0 +1,58 @@
+<!DOCTYPE html> 
+<html>
+
+<head>
+    <title>Ambev API Platform</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href='http://fonts.googleapis.com/css?family=Raleway:400,500,600,700|Roboto:700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css"href="css.css">
+
+<script src="jquery.min.js"></script>
+<script> 
+    $(function(){
+      $("#includedMenu").load("menu.html"); 
+    });
+    </script> 
+
+
+</head>
+<body>
+
+ <div id="includedMenu"></div>
+
+<div style="padding: 15px;">
+<h1>Implantação</h1>
+<br>
+Agora que você implementou as principais integrações com a API da Ambev, é hora de realizar a implantação. Esse processo consiste em validar as integrações implementadas (homologação) e, obtenção de um token com acesso à produção.
+<br><br>
+<h3>Homologação com a Ambev</h3>
+<br><br>
+Para que sua aplicação possa utilizar as APIs de produção, ela deverá passar por um processo de homologação, onde as integrações mais relevantes serão verificadas e avaliadas.
+Para solicitar a homologação de sua APP quando já estiver com sua implementação concluída, execute todo o fluxo de operação no seu ambiente de sandbox, conforme listado abaixo, e em seguida abra um chamado no portal dos desenvolvedores solicitando a homologação e informando o nome do (Owner) do access_token que você utilizou para realizar seus testes e também as URLs dos serviços de notificação de pedidos, consulta de frete e reserva de estoque, se foram implementados. Nossa equipe irá revisar todos os requests enviados e fazer os testes nas URLs para então aprovar a app para operar em ambiente de produção.
+<br><br>
+Os requests a serem verificados serão os seguintes:<br><br>
+POST /loads/products<br>
+GET /loads/products<br>
+GET /sellerItems<br>
+PUT /sellerItems/{skuSellerId}/status<br>
+PUT /sellerItems/{skuSellerId}/prices<br>
+PUT /sellerItems/{skuSellerId}/stock<br>
+POST /orders<br>
+GET /orders/status/new<br>
+PUT /orders/status/approved/{orderId}<br>
+GET /orders/status/approved<br>
+POST /orders/{orderId}/trackings/sent<br>
+POST /orders/{orderId}/trackings/delivered<br><br>
+
+Para maiores detalhes acesse: Fluxos Básicos de Integração Processo de homologação<br>
+
+<h3>Obtenção do Token de Produção</h3><br>
+Até agora, todas as integrações foram realizadas com um token gerado automaticamente no ambiente de sandbox. Para o ambiente de produção esse token não será gerado automaticamente. Em vez disso, esse token poderá ser solicitado via um processo OAuth2.
+<br><br>
+<h3>Fluxo OAuth 2</h3>
+OAuth 2 é um padrão de mercado e garante que informações mais sensíveis como usuários e senha não sejam diretamente utilizados por aplicativos de terceiro. Visão Geral sobre o oAuth na API do Marketplace Fluxo de comunicação OAuth2
+<br>
+</div>
+</body>
+</html>
